@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>EA Boston Events</title>
+  </head>
+  <body>
+    <h1>EA Boston Events</h1>
+    {% if event_list %}
+      <ul>
+        {% for event in event_list %}
+          <li>
+            <h2>{{ event.title }}</h2>
+            <h3>{{ event.start_time }}{% if event.end_time %}–{{ event.end_time }}{% endif %}, {{ event.location }}</h3>
+            <img src="{{ event.picture.url }}" alt="{{ event.title }}">
+            <p>{{ event.description }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>There are no events scheduled right now.</p>
+    {% endif %}
+  </body>
+</html>

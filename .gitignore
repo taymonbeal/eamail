@@ -1,2 +1,2 @@
-*.pyc
-db.sqlite3
+/.vagrant/
+ubuntu-xenial-16.04-cloudimg-console.log

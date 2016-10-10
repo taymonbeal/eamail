@@ -1,0 +1,4 @@
+Django==1.10.2
+MySQL-python==1.2.5
+pytz==2016.7
+http://effbot.org/downloads/Imaging-1.1.7.tar.gz
