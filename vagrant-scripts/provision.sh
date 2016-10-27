@@ -2,7 +2,7 @@
 set -o errexit
 set -o pipefail
 sudo apt-get --assume-yes update
-sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install libbz2-dev libmysqlclient-dev libreadline-dev libsqlite3-dev libssl-dev mysql-server-5.7
+sudo DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install build-essential libbz2-dev libmysqlclient-dev libreadline-dev libsqlite3-dev libssl-dev mysql-server-5.7
 sudo apt-get --assume-yes autoremove
 wget --output-document=- --progress=bar:force https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 ~/.pyenv/bin/pyenv install --verbose 2.7.12
