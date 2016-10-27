@@ -1,4 +1,4 @@
 Django==1.10.2
 MySQL-python==1.2.5
 pytz==2016.7
-http://effbot.org/downloads/Imaging-1.1.7.tar.gz
+http://effbot.org/downloads/Imaging-1.1.7.tar.gz#sha512=fec2d39b4db3cb33cd7e7895aba4c3a8a5d4cff28decb9106c88e392cb848edf5593fcd77d11994bb16321837fdb26958787dac2c86d6f7c09996f466bac11f1

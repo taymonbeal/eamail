@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-import os
+from os.path import abspath, dirname, expanduser, join
 
 
 DATABASES = {
@@ -18,7 +18,7 @@ DEBUG = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-MEDIA_ROOT = os.path.expanduser('~/media/')
+MEDIA_ROOT = expanduser('~/media/')
 MEDIA_URL = '/media/'
 
 LANGUAGE_CODE = 'en-us'
@@ -47,13 +47,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'events',
+    'project.events',
+    'project.subscriptions',
 ]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            join(dirname(dirname(abspath(__file__))), 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +72,7 @@ TEMPLATES = [
 SECRET_KEY = 'development_secret_key'
 X_FRAME_OPTIONS = 'DENY'
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'project.config.urls'
 
 SITE_ID = 1
 
