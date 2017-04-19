@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block fulltitle %}EA Boston Events{% endblock fulltitle %}
-
+{% block styling %}<link rel="stylesheet" href="{% static 'css/simplesheet.css' %}">{% endblock styling %}
 {% block content %}
   <h1>EA Boston Events</h1>
   {% if event_list %}
