@@ -9,14 +9,15 @@
     <main>
       {% for event in event_list %}
         <article class="event">
-          <div class="eventtext">
-          <h1>{{ event.name }}</h1>
-          <time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>
-          {% if event.end_time %}<time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}
-          <address>{{ event.location }}</address>
-          <p>{{ event.description }}</p>
+          <div class="eventpic" style="background-image: url('{{ event.picture.url }}')">
+            <h1>{{ event.name }}</h1>
           </div>
-          <img src="{{ event.picture.url }}" alt="" class="eventpic">
+          <div class="eventbody">
+            <time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>
+          {% if event.end_time %}<time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}
+            <address>{{ event.location }}</address>
+            <p>{{ event.description }}</p>
+          </div>
         </article>
       {% endfor %}
     </main>
