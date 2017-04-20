@@ -12,6 +12,16 @@ footer {
 	text-align: center;
 	opacity: 0.5;
 }
-h1 {
-	color: #446699;
+main h1 { color: #469; }
+header h1 { background-color: #469; color: #fff; text-align: center; font-weight: normal; }
+.event {
+	display: flex;
+	align-items: top;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	flex-direction: row;
 }
+.event .eventtext { flex-basis: 60%; }
+.event .eventimage { flex-basis: 30%; flex-shrink: 1; }
+.event h1 { margin-bottom: 0; }
+.event address { font-style: unset; }
