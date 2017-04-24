@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block fulltitle %}EA Boston Events{% endblock fulltitle %}
-
+{% block styling %}<link rel="stylesheet" href="{% static 'css/simplesheet.css' %}">{% endblock styling %}
 {% block content %}
-  <h1>EA Boston Events</h1>
+  <header><h1>EA Boston Events</h1></header>
   {% if event_list %}
-    <ul>
+    <main>
       {% for event in event_list %}
-        <li>
-          <h2>{{ event.title }}</h2>
-          <h3>{{ event.start_time }}{% if event.end_time %}–{{ event.end_time }}{% endif %}, {{ event.location }}</h3>
-          <img src="{{ event.picture.url }}" alt="{{ event.title }}">
-          <p>{{ event.description }}</p>
-        </li>
+        <article class="event">
+          <div class="eventpic" style="background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('{{ event.picture.url }}')">
+            <h1>{{ event.name }}</h1>
+            <time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>
+          {% if event.end_time %}<time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}
+            <address>{{ event.location }}</address>
+          </div>
+          <div class="eventbody">
+            <p>{{ event.description }}</p>
+          </div>
+        </article>
       {% endfor %}
-    </ul>
+    </main>
   {% else %}
     <p>There are no events scheduled right now.</p>
   {% endif %}
