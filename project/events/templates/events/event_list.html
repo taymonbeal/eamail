@@ -9,13 +9,13 @@
     <main>
       {% for event in event_list %}
         <article class="event">
-          <div class="eventpic" style="background-image: url('{{ event.picture.url }}')">
+          <div class="eventpic" style="background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url('{{ event.picture.url }}')">
             <h1>{{ event.name }}</h1>
-          </div>
-          <div class="eventbody">
             <time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>
           {% if event.end_time %}<time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}
             <address>{{ event.location }}</address>
+          </div>
+          <div class="eventbody">
             <p>{{ event.description }}</p>
           </div>
         </article>
