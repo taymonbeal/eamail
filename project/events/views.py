@@ -7,3 +7,4 @@ from .models import Event
 
 class EventListView(ListView):
     model = Event
+    queryset = Event.objects.order_by('start_time')
