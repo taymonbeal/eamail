@@ -1,9 +1,8 @@
 body {
-	background-color: #eee;
+	background-color: #fff;
 	color: #000;
-	font-family: sans-serif;
-	line-height: 1.5;
-	margin: 0 auto;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	margin: 0;
 }
 header h1 {
 	background: linear-gradient(#247, #469);
@@ -11,38 +10,35 @@ header h1 {
 	text-align: center;
 	font-weight: normal;
 	margin: 0;
-	padding: 0.75em 0;
 	box-shadow: inset 0 -2px 5px rgba(0,0,0,0.2);
-	letter-spacing: 0.25ch;
 }
 
-main { display: flex; flex-flow: row wrap; margin: 0.25rem; }
+details { background-color: #fff; }
+summary { display: block; }
+summary h1 { margin: 0; }
+summary img { float: left; }
+summary .date { margin: 0; }
 
-article.event {
-	margin: 0.5rem;
-	background-color: #fff;
-	flex: 1 0 23%;
-	min-width: 15em;
-	box-shadow: 0 0 0 1px #ccc, 2px 2px 6px rgba(0,0,0,0.16);
-	border-radius: 0.5rem;
+/* Sizing on large devices */
+@media (min-width: 30.001rem) {
+	main { max-width: 40rem; margin: 0 auto; }
+	body { line-height: 1.5 }
+	header h1 { padding: 0.5em 0 }
+	details { background-color: #fff; padding: 0.5em; margin: 1em; border: solid thin; }
+	summary { line-height: 2em; }
+	summary h1 { font-size: 1.5em; }
+	summary img { height: 4em; margin-right: 0.5em; }
+	details p:last-child { margin-bottom: 0; }
 }
-article.event:nth-last-child(2):nth-child(4n) { min-width: 33%; }
-article.event div.eventpic {
-	background-size: cover;
-	 border-top-left-radius: 0.5rem;
-	 border-top-right-radius: 0.5rem;
-	display: flex;
-	min-height: 15rem;
-	align-items: center;
-	text-align: center;
-	flex-direction: column;
-	justify-content: space-evenly;
-	color: #000;
-	text-shadow: 1px 1px 6px #fff;
+
+/* Sizing on small devices */
+@media (max-width: 30rem) {
+	body { font-size: 0.8em; line-height: 1.25; }
+	header h1 { padding: 0.1em 0; font-size: 2em; margin-bottom: 0.2em; }
+	details { padding: 0.2em; border-bottom: solid thin; }
+	article:first-child details { border-top: solid thin; }
+	summary h1 { font-size: 1.25em; line-height: 1; }
+	summary img { height: 2.5em; margin-right: 0.1em; }
+	p { margin: 0.5em 0; }
+	details p:last-child { margin-bottom: 0; }
 }
-article.event h1 {
-	padding: 0 0.5rem;
-	margin: 0;
-}
-article.event div.eventbody { padding-left: 0.5rem; padding-right: 0.5rem; }
-article.event address { font-style: unset; }
