@@ -11,5 +11,5 @@ class EventListView(ListView):
     queryset = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
 
 class PastEventListView(EventListView):
-    queryset = Event.objects.filter(start_time__lte=Now()).order_by('start_time').reverse()
+    queryset = Event.objects.filter(start_time__lte=Now()).order_by('-start_time')
     template_name = 'events/event_list.html'
