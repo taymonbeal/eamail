@@ -1,42 +1,39 @@
 body {
-	background-color: #fff;
-	color: #000;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	margin: 0;
 }
 header h1 {
-	background: linear-gradient(#247, #469);
+	background: linear-gradient(#054410, #364 90%, #306040);
 	color: #fff;
 	text-align: center;
 	font-weight: normal;
 	margin: 0;
-	box-shadow: inset 0 -2px 5px rgba(0,0,0,0.2);
 }
 
-details { background-color: #fff; }
+details { background-color: #fff; color: #000; }
 summary { display: block; }
 summary h1 { margin: 0; }
 summary img { float: left; }
 summary .date { margin: 0; }
 
-/* Sizing on large devices */
+/* Behavior on large devices */
 @media (min-width: 30.001rem) {
-	main { max-width: 40rem; margin: 0 auto; }
-	body { line-height: 1.5 }
-	header h1 { padding: 0.5em 0 }
-	details { background-color: #fff; padding: 0.5em; margin: 1em; border: solid thin; }
-	summary { line-height: 2em; }
-	summary h1 { font-size: 1.5em; }
-	summary img { height: 4em; margin-right: 0.5em; }
+	main { display: flex; flex-flow: row wrap; justify-content: space-evenly; }
+	body { line-height: 1.5; background-color: #ded; }
+	header h1 { font-size: 2em; padding: 0.5em 0; }
+	details { padding: 0.5em; margin: 0.5em; border: solid thin; min-width: 20rem; min-height: 8em; flex: 1 0 30%;}
+	details[open] { border-color: #060; }
+	summary h1 { font-size: 1.5em; line-height: 1.25; }
+	summary img { height: 8em; margin-right: 0.5em; }
 	details p:last-child { margin-bottom: 0; }
 }
 
-/* Sizing on small devices */
+/* Behavior on small devices */
 @media (max-width: 30rem) {
-	body { font-size: 0.8em; line-height: 1.25; }
+	body { font-size: 0.8em; line-height: 1.25; background-color: #fff; }
 	header h1 { padding: 0.1em 0; font-size: 2em; margin-bottom: 0.2em; }
 	details { padding: 0.2em; border-bottom: solid thin; }
-	article:first-child details { border-top: solid thin; }
+	details:first-child { border-top: solid thin; }
 	summary h1 { font-size: 1.25em; line-height: 1; }
 	summary img { height: 2.5em; margin-right: 0.1em; }
 	p { margin: 0.5em 0; }
