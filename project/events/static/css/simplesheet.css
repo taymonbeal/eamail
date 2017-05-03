@@ -18,12 +18,12 @@ summary .date { margin: 0; }
 
 /* Behavior on large devices */
 @media (min-width: 30.001rem) {
-	main { display: flex; flex-flow: row wrap; justify-content: space-evenly; }
+	main { display: flex; flex-flow: row wrap; justify-content: space-evenly; max-width: 90em; margin: 0 auto; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
-	details { padding: 0.5em; margin: 0.5em; border: solid thin; min-width: 20rem; max-width: 40rem; min-height: 8em; flex: 1 0 30%;}
-	details:not([open]) { height: 8em; }
-	details[open] { border-color: #060; }
+	details { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
+	details:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; }
+	details[open] { min-width: calc(100% - 2em); min-height: 8em; }
 	summary h1 { font-size: 1.5em; line-height: 1.25; }
 	summary img { height: 8em; margin-right: 0.5em; }
 	details p:last-child { margin-bottom: 0; }
