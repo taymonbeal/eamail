@@ -22,8 +22,8 @@ summary .date { margin: 0; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
 	details { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
-	details:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; }
-	details[open] { min-width: calc(100% - 2em); min-height: 8em; }
+	details:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
+	details[open] { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
 	summary h1 { font-size: 1.5em; line-height: 1.25; }
 	summary img { height: 8em; margin-right: 0.5em; }
 	details p:last-child { margin-bottom: 0; }
