@@ -21,7 +21,8 @@ summary .date { margin: 0; }
 	main { display: flex; flex-flow: row wrap; justify-content: space-evenly; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
-	details { padding: 0.5em; margin: 0.5em; border: solid thin; min-width: 20rem; min-height: 8em; flex: 1 0 30%;}
+	details { padding: 0.5em; margin: 0.5em; border: solid thin; min-width: 20rem; max-width: 40rem; min-height: 8em; flex: 1 0 30%;}
+	details:not([open]) { height: 8em; }
 	details[open] { border-color: #060; }
 	summary h1 { font-size: 1.5em; line-height: 1.25; }
 	summary img { height: 8em; margin-right: 0.5em; }
