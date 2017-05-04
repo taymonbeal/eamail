@@ -3,18 +3,22 @@ body {
 	margin: 0;
 }
 header h1 {
-	background: linear-gradient(#054410, #364 90%, #306040);
+	background: linear-gradient(to top, #054410, #364 90%, #306040);
 	color: #fff;
 	text-align: center;
 	font-weight: normal;
 	margin: 0;
 }
+header h1:hover, header h1:focus { background: linear-gradient(to bottom, #054410, #364 90%, #306040); }
+header h1 a { color: #fff; text-decoration: none; }
 .event { background-color: #fff; color: #000; }
 summary { display: block; }
 .event h1 { margin: 0; }
 .event img { float: left; }
 .event .date { margin: 0; }
 .event p:last-child { margin-bottom: 0; }
+
+nav { text-align: center; }
 
 /* Behavior on large devices */
 @media (min-width: 30.001rem) {
@@ -32,6 +36,7 @@ summary { display: block; }
 @media (max-width: 30rem) {
 	body { font-size: 0.8em; line-height: 1.25; background-color: #fff; }
 	header h1 { padding: 0.1em 0; font-size: 2em; margin-bottom: 0.2em; }
+	nav { margin: 0.4em; }
 	.event { padding: 0.2em; border-bottom: solid thin; }
 	.event:first-child { border-top: solid thin; }
 	.event h1 { font-size: 1.25em; line-height: 1; }
