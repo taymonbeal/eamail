@@ -9,33 +9,32 @@ header h1 {
 	font-weight: normal;
 	margin: 0;
 }
-details { background-color: #fff; color: #000; }
+.event { background-color: #fff; color: #000; }
 summary { display: block; }
-summary h1 { margin: 0; }
-summary img { float: left; }
-summary .date { margin: 0; }
+.event h1 { margin: 0; }
+.event img { float: left; }
+.event .date { margin: 0; }
+.event p:last-child { margin-bottom: 0; }
 
 /* Behavior on large devices */
 @media (min-width: 30.001rem) {
 	main { display: flex; flex-flow: row wrap; justify-content: space-evenly; max-width: 90em; margin: 0 auto; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
-	details { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
-	details:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
-	details[open] { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
-	summary h1 { font-size: 1.5em; line-height: 1.25; }
-	summary img { height: 8em; margin-right: 0.5em; }
-	details p:last-child { margin-bottom: 0; }
+	.event { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
+	details.event:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
+	details.event[open], article.event { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
+	.event h1 { font-size: 1.5em; line-height: 1.25; }
+	.event img { height: 8em; margin-right: 0.5em; }
 }
 
 /* Behavior on small devices */
 @media (max-width: 30rem) {
 	body { font-size: 0.8em; line-height: 1.25; background-color: #fff; }
 	header h1 { padding: 0.1em 0; font-size: 2em; margin-bottom: 0.2em; }
-	details { padding: 0.2em; border-bottom: solid thin; }
-	details:first-child { border-top: solid thin; }
-	summary h1 { font-size: 1.25em; line-height: 1; }
-	summary img { height: 2.5em; margin-right: 0.1em; }
+	.event { padding: 0.2em; border-bottom: solid thin; }
+	.event:first-child { border-top: solid thin; }
+	.event h1 { font-size: 1.25em; line-height: 1; }
+	.event img { height: 2.5em; margin-right: 0.1em; }
 	p { margin: 0.5em 0; }
-	details p:last-child { margin-bottom: 0; }
 }

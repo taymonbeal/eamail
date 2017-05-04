@@ -8,7 +8,7 @@
   {% if event_list %}
     <main>
       {% for event in event_list %}
-          <details>
+          <details class="event">
             <summary>
               <img src="{{ event.picture.url }}" alt=""/>
               <h1>{{ event.name }}</h1>
