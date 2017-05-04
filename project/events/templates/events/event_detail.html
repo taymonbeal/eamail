@@ -12,6 +12,12 @@
               <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %} -- <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}</p>
             <p>{{ event.location }}</p>
             <p>{{ event.description }}</p>
+            <p>Categories:
+            {% for interest in event.interests.all %}
+            {{ interest.name }}{% if not forloop.last %},
+            {% endif %}
+            {% endfor %}
+            </p>
           </article>
     </main>
 {% endblock content %}
