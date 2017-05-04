@@ -17,7 +17,7 @@ uuid_pattern = (r'(?P<uuid>' +
 urlpatterns = [
     url(r'^$', EventListView.as_view(), name='event_list'),
     url(r'^event/(?P<pk>\d+)/$', EventDetailView.as_view(), name='event_detail'),
-    url(r'^past/$', PastEventListView.as_view()),
+    url(r'^past/$', PastEventListView.as_view(), name='event_past'),
     url(r'^admin/', admin_site.urls),
     url(r'^subscriptions/{uuid_pattern}/$'.format(uuid_pattern=uuid_pattern),
         SubscriberUpdateView.as_view(),
