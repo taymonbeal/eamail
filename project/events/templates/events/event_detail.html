@@ -5,23 +5,20 @@
 {% block styling %}<link rel="stylesheet" href="{% static 'css/simplesheet.css' %}">{% endblock styling %}
 {% block content %}
   <header><h1><a href="{% url 'event_list' %}">EA Boston Events</a></h1></header>
-  {% if event_list %}
     <main>
-      {% for event in event_list %}
-          <details class="event">
-            <summary>
+          <article class="event">
               <img src="{{ event.picture.url }}" alt=""/>
               <h1>{{ event.name }}</h1>
               <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %} -- <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}</p>
-            </summary>
             <p>{{ event.location }}</p>
             <p>{{ event.description }}</p>
-            <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
-          </details>
-      {% endfor %}
+            <p>Categories:
+            {% for interest in event.interests.all %}
+            {{ interest.name }}{% if not forloop.last %},
+            {% endif %}
+            {% endfor %}
+            </p>
+          </article>
     </main>
-  {% else %}
-    <p>There are no events scheduled right now.</p>
-  {% endif %}
   <nav><a href="{% url 'event_past' %}">Past events</a></nav>
 {% endblock content %}
