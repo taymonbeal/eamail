@@ -4,7 +4,7 @@
 {% block fulltitle %}EA Boston Events{% endblock fulltitle %}
 {% block styling %}<link rel="stylesheet" href="{% static 'css/simplesheet.css' %}">{% endblock styling %}
 {% block content %}
-  <header><h1>EA Boston Events</h1></header>
+  <header><h1><a href="{% url 'event_list' %}">EA Boston Events</a></h1></header>
     <main>
           <article class="event">
               <img src="{{ event.picture.url }}" alt=""/>
@@ -20,4 +20,5 @@
             </p>
           </article>
     </main>
+  <nav><a href="{% url 'event_past' %}">Past events</a></nav>
 {% endblock content %}
