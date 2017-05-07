@@ -12,7 +12,7 @@
             <summary>
               <img src="{{ event.picture.url }}" alt=""/>
               <h1>{{ event.name }}</h1>
-              <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %} -- <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time }}</time>{% endif %}</p>
+              <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %}: <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time|timeuntil:event.start_time }}</time> long{% endif %}</p>
             </summary>
             <p>{{ event.location }}</p>
             <p>{{ event.description }}</p>
