@@ -17,6 +17,10 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from ..events.models import Interest
 
 
+def create_token():
+    return Token.objects.create()
+
+
 @python_2_unicode_compatible
 class Token(Model):
 
@@ -43,7 +47,7 @@ class SubscriberManager(Manager):
 class Subscriber(Model):
 
     email = EmailField(unique=True)
-    token = OneToOneField(Token, on_delete=CASCADE)
+    token = OneToOneField(Token, on_delete=CASCADE, default=create_token)
     interests = ManyToManyField(Interest)
 
     objects = SubscriberManager()
