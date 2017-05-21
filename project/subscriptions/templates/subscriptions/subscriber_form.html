@@ -3,10 +3,12 @@
 {% block title %}Subscription Preferences{% endblock title %}
 
 {% block content %}
-  <h1>Subscription Preferences</h1>
+<main>
   <form method="POST">
+    <h1>Subscription Preferences</h1>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
   </form>
+</main>
 {% endblock content %}
