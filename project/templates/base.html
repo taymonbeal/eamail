@@ -1,12 +1,16 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
     <title>{% block fulltitle %}{% block title %}{% endblock title %} – EA Boston{% endblock fulltitle %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/simplesheet.css' %}">
     {% block styling %}{% endblock styling %}
   </head>
   <body>
+    <header><h1><a href="{% url 'event_list' %}">EA Boston Events</a></h1></header>
     {% block content %}{% endblock content %}
   </body>
 </html>
