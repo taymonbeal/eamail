@@ -12,3 +12,7 @@ class SubscriberUpdateView(SubscriberMixin, UpdateView):
 
 class NewSubscriptionView(FormView):
     form_class = NewSubscriberForm
+    template_name = 'subscriptions/new_subscription.html'
+
+    def form_valid(self, form):
+        print "You submitted a valid form, but we haven't set up any good success behavior yet. Sorry."
