@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.contrib import messages
+from django.shortcuts import redirect
 from django.views.generic.edit import FormView, UpdateView
 
 from .forms import NewSubscriberForm
@@ -13,7 +15,9 @@ class SubscriberUpdateView(SubscriberMixin, UpdateView):
 class NewSubscriptionView(FormView):
     form_class = NewSubscriberForm
     template_name = 'subscriptions/new_subscription.html'
+    success_url = '/future/'
 
     def form_valid(self, form):
-        print "You submitted a valid form, but we haven't set up any good success behavior yet. Sorry."
         form.save()
+        messages.success(self.request, 'Thank you for subscribing.')
+        return redirect('event_list')

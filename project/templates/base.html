@@ -11,6 +11,15 @@
   </head>
   <body>
     <header><h1><a href="{% url 'event_list' %}">EA Boston Events</a></h1></header>
+    {% if messages %}
+    <section id="messages">
+      <ul>
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
     {% block content %}{% endblock content %}
   </body>
 </html>
