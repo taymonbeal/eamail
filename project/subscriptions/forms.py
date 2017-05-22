@@ -7,4 +7,4 @@ class NewSubscriberForm(forms.ModelForm):
     class Meta:
         model = Subscriber
         fields = ('email', 'interests')
-        widgets = { 'interests': forms.CheckboxSelectMultiple }
+        widgets = {'interests': forms.CheckboxSelectMultiple}
