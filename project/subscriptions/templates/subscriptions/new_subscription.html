@@ -4,12 +4,16 @@
 
 {% block content %}
 <main>
-  <form method="POST">
-    <h1>Subscribe here</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Subscribe">
-  </form>
+  <details id="subscribeform">
+    <summary>
+      <h1>Subscribe</h1>
+    </summary>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Subscribe">
+    </form>
+  </details>
   {% for event in futureevents %}
     <details class="event">
       <summary>

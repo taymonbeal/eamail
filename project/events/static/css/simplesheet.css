@@ -13,11 +13,10 @@ header h1 a:hover, header h1 a:focus { text-shadow: 0 0 1ch #fff; }
 header h1 a { color: #fff; text-decoration: none; }
 
 form #id_interests { list-style-type: none; padding: 0; }
-form h1 { margin: 0; }
 
-.event, form { background-color: #fff; color: #000; }
+.event, #subscribeform { background-color: #fff; color: #000; }
 summary { display: block; }
-.event h1 { margin: 0; }
+summary h1 { margin: 0; }
 .event img { float: left; }
 .event .date { margin: 0; }
 .event p:last-child { margin-bottom: 0; }
@@ -30,11 +29,9 @@ nav { text-align: center; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
 
-	form { padding: 0.5em; margin: 0.5em; border: solid thin; min-width: 28rem; max-width: 40rem; }
-
-	.event { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
-	details.event:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
-	details.event[open], article.event { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
+	.event, #subscribeform { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
+	details.event:not([open]), #subscribeform:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
+	details.event[open], article.event, #subscribeform[open] { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
 	.event h1 { font-size: 1.5em; line-height: 1.25; }
 	.event img { height: 8em; margin-right: 0.5em; }
 }
@@ -46,11 +43,8 @@ nav { text-align: center; }
 	nav { margin: 0.4em; }
 	p { margin: 0.5em 0; }
 
-	form { padding: 0.2em; }
-	form h1 { font-size: 1.25em; line-height: 1; }
-
-	.event { padding: 0.2em; border-bottom: solid thin; }
-	.event:first-child { border-top: solid thin; }
-	.event h1 { font-size: 1.25em; line-height: 1; }
+	.event, #subscribeform { padding: 0.2em; border-bottom: solid thin; }
+	.event:first-child, #subscribeform { border-top: solid thin; }
+	summary h1 { font-size: 1.25em; line-height: 1; }
 	.event img { height: 2.5em; margin-right: 0.1em; }
 }
