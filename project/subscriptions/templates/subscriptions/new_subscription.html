@@ -8,7 +8,19 @@
     <h1>Subscribe here</h1>
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Update">
+    <input type="submit" value="Subscribe">
   </form>
+  {% for event in futureevents %}
+    <details class="event">
+      <summary>
+        <img src="{{ event.picture.url }}" alt=""/>
+        <h1>{{ event.name }}</h1>
+        <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %}: <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time|timeuntil:event.start_time }}</time> long{% endif %}</p>
+      </summary>
+      <p>{{ event.location }}</p>
+      <p>{{ event.description }}</p>
+      <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
+    </details>
+  {% endfor %}
 </main>
 {% endblock content %}
