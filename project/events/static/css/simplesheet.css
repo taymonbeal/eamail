@@ -14,7 +14,7 @@ header h1 a { color: #fff; text-decoration: none; }
 
 form #id_interests { list-style-type: none; padding: 0; }
 
-.event, #subscribeform { background-color: #fff; color: #000; }
+.event, #subscribeform, #noevents { background-color: #fff; color: #000; }
 summary { display: block; }
 summary::before { content: none; }
 summary h1 { margin: 0; }
@@ -30,8 +30,9 @@ nav { text-align: center; }
 	body { line-height: 1.5; background-color: #ded; }
 	header h1 { font-size: 2em; padding: 0.5em 0; }
 
-	.event, #subscribeform { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
-	details.event:not([open]), #subscribeform:not([open]) { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
+	.event, #subscribeform, #noevents { padding: 0.5em; margin: 0.5em; border: solid thin; flex: 1 0 20%;}
+	#noevents p { margin-top: 2.5em; text-align: center; }
+	details.event:not([open]), #subscribeform:not([open]), #noevents { height: 8em; min-width: 20rem; max-width: 40rem; order: 2; }
 	details.event[open], article.event, #subscribeform[open] { min-width: calc(100% - 2em); min-height: 8em; order: 1; }
 	summary h1 { font-size: 1.5em; line-height: 1.25; }
 	summary img { height: 8em; margin-right: 0.5em; }
@@ -44,7 +45,7 @@ nav { text-align: center; }
 	nav { margin: 0.4em; }
 	p { margin: 0.5em 0; }
 
-	.event, #subscribeform { padding: 0.2em; border-bottom: solid thin; }
+	.event, #subscribeform, #noevents { padding: 0.2em; border-bottom: solid thin; }
 	.event:first-child, #subscribeform { border-top: solid thin; }
 	summary h1 { font-size: 1.25em; line-height: 1; }
 	summary img { height: 2.5em; margin-right: 0.1em; }

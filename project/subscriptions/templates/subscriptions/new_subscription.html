@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}Subscribe now!{% endblock title %}
+{% block title %}Subscribe{% endblock title %}
 
 {% block content %}
 <main>
@@ -28,6 +28,9 @@
       <p>{{ event.description }}</p>
       <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
     </details>
+  {% empty %}
+    <aside id="noevents"><p>There are no future events scheduled yet. For events that have already started, see <a href="{% url 'event_past' %}">the Past Events page</a>.</p></aside>
   {% endfor %}
 </main>
+<nav><a href="{% url 'event_past' %}">Past events</a></nav>
 {% endblock content %}
