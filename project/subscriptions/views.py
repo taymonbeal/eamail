@@ -26,8 +26,5 @@ class NewSubscriptionView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(NewSubscriptionView, self).get_context_data(**kwargs)
-        context['futureevents'] = Event.objects.order_by('start_time')
-        # In the final version, this should be:
-        # context['futureevents'] = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
-        # It's like this for testing purposes, so more events appear.
+        context['futureevents'] = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
         return context
