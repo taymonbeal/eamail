@@ -1,0 +1,7 @@
+{% autoescape off %}{% for event in events %}{{ event.name }}
+{{ event.start_time }}{% if event.end_time %}–{{ event.end_time }}{% endif %}
+{{ event.location }}
+{{ event.description }}
+{% url 'event_detail' pk=event.pk %}
+
+{% endfor %}{% endautoescape %}
