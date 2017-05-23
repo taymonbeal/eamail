@@ -46,6 +46,7 @@ nav { text-align: center; }
 	p { margin: 0.5em 0; }
 
 	.event, #subscribeform, #noevents { padding: 0.2em; border-bottom: solid thin; }
+	#noevents p { margin: 0; }
 	.event:first-child, #subscribeform { border-top: solid thin; }
 	summary h1 { font-size: 1.25em; line-height: 1; }
 	summary img { height: 2.5em; margin-right: 0.1em; }
