@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 
-from django.db.models.functions import Now
 from django.contrib import messages
+from django.db.models.functions import Now
 from django.shortcuts import redirect
 from django.views.generic.edit import FormView, UpdateView
 
 from .forms import NewSubscriberForm
-from ..events.models import Event
 from .viewmixins import SubscriberMixin
+from ..events.models import Event
 
 
 class SubscriberUpdateView(SubscriberMixin, UpdateView):
