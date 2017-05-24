@@ -10,12 +10,7 @@ class EventDetailView(DetailView):
     model = Event
 
 
-class EventListView(ListView):
-    model = Event
-    queryset = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
-
-
 class PastEventListView(ListView):
     model = Event
     queryset = Event.objects.filter(start_time__lte=Now()).order_by('-start_time')
-    template_name = 'events/event_list.html'
+    template_name = 'events/past_event_list.html'

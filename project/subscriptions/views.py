@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.db.models.functions import Now
 from django.shortcuts import redirect
 from django.views.generic.edit import FormView, UpdateView
 
 from .forms import NewSubscriberForm
 from .viewmixins import SubscriberMixin
+from ..events.models import Event
 
 
 class SubscriberUpdateView(SubscriberMixin, UpdateView):
@@ -21,3 +23,8 @@ class NewSubscriptionView(FormView):
         form.save()
         messages.success(self.request, 'Thank you for subscribing.')
         return redirect('event_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(NewSubscriptionView, self).get_context_data(**kwargs)
+        context['futureevents'] = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
+        return context

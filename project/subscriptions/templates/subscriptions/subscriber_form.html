@@ -4,7 +4,7 @@
 
 {% block content %}
 <main>
-  <form method="POST">
+  <form method="POST" class="form-only-page">
     <h1>Subscription Preferences</h1>
     {% csrf_token %}
     {{ form.as_p }}

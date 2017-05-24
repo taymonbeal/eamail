@@ -1,14 +1,36 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
-{% block title %}Subscribe now!{% endblock title %}
+{% block title %}Subscribe{% endblock title %}
 
 {% block content %}
 <main>
-  <form method="POST">
-    <h1>Subscribe here</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-  </form>
+  <details id="subscribeform" {% if form.errors %}open{% endif %}>
+    <summary>
+      <img src="{% static 'icons/mail_icon_aiga.svg' %}" alt="mail icon"/>
+      <h1>Subscribe</h1>
+      <p id="subscribeblurb">Please subscribe to our mailing list.</p>
+    </summary>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Subscribe">
+    </form>
+  </details>
+  {% for event in futureevents %}
+    <details class="event">
+      <summary>
+        <img src="{{ event.picture.url }}" alt=""/>
+        <h1>{{ event.name }}</h1>
+        <p class="date"><time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time>{% if event.end_time %}: <time datetime="{{ event.end_time|date:'c' }}">{{ event.end_time|timeuntil:event.start_time }}</time> long{% endif %}</p>
+      </summary>
+      <p>{{ event.location }}</p>
+      <p>{{ event.description }}</p>
+      <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
+    </details>
+  {% empty %}
+    <aside id="noevents"><p>There are no future events scheduled yet. For events that have already started, see <a href="{% url 'event_past' %}">the Past Events page</a>.</p></aside>
+  {% endfor %}
 </main>
+<nav><a href="{% url 'event_past' %}">Past events</a></nav>
 {% endblock content %}
