@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="152" height="114">
-<!-- <rect width="114" height="114" rx="11"/> -->
-<path stroke="#060" fill="transparent" stroke-width="6" d="m16,25h82v60H16zl37,37q4,3 8,0l37-37M16,85l30-30m22,0 30,30"/>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg2" height="66" width="88">
+  <path
+     style="fill:#f8fff8;stroke:#060;stroke-width:4;shape-rendering:crispEdges;"
+     d="m 3,3 82,0 0,60 -82,0 z m 0,0 37,37 q 4,3 8,0 L 85,3 M 3,63 33,33 m 22,0 30,30" />
 </svg>
-<!-- File taken from https://commons.wikimedia.org/wiki/File:Aiga_mail_inverted.svg, it's public domain -->
+<!-- Derived from public-domain image https://commons.wikimedia.org/wiki/File:Aiga_mail_inverted.svg -->
