@@ -5,7 +5,7 @@
 
 {% block content %}
 <main>
-  <details id="subscribeform">
+  <details id="subscribeform" {% if form.errors %}open{% endif %}>
     <summary>
       <img src="{% static 'icons/mail_icon_aiga.svg' %}" alt="mail icon"/>
       <h1>Subscribe</h1>
