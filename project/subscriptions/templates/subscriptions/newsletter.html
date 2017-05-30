@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  </head>
+  <body vlink="#551A8B" link="#0B6CDA" bgcolor="#ffffff" alink="#EE0000"
+    text="#000000">
+    <table border="1" cellspacing="2" cellpadding="2" width="100%">
+      <tbody>
+        <tr>
+          <td valign="top" bgcolor="#003300" align="center" colspan="2">
+            <h1><font color="#ffffff">EA Boston Events</font><br>
+            </h1>
+          </td>
+        </tr>
+        {% for event in events %}
+        <tr>
+          <td valign="center"><img
+              src="{{ event.picture.url }}" alt=""></td>
+          <td valign="center">
+            <h2>{{ event.name }}</h2>
+            <p class="date"><time datetime="2017-05-23T18:00:00-04:00">May
+                23, 2017, 6 p.m.</time>: <time
+                datetime="2017-06-01T12:00:00-04:00">1Â week, 1Â day</time>
+              long</p>
+            <p>{{ event.location }}</p>
+            <p>{{ event.description }}</p>
+            <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><font size="-1">Unsubscribe <a href="#">here</a>.</font></p>
+    <p><font size="-1">Obviously this is not remotely finished<br>
+        but it's a step to having something simple<br>
+        for me to look at, maybe?</font></p>
+  </body>
+</html>
