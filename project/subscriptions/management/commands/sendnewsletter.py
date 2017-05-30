@@ -27,4 +27,6 @@ class Command(BaseCommand):
                             'subscriptions/newsletter.txt', {'events': events}),
                         from_email='webmaster@localhost',
                         recipient_list=[subscriber.email],
-                        connection=connection)
+                        connection=connection,
+                        html_message=render_to_string(
+                            'subscriptions/newsletter.html', {'events': events}))
