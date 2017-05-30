@@ -18,10 +18,13 @@
               src="{{ event.picture.url }}" alt=""></td>
           <td valign="center">
             <h2>{{ event.name }}</h2>
-            <p class="date"><time datetime="2017-05-23T18:00:00-04:00">May
-                23, 2017, 6 p.m.</time>: <time
-                datetime="2017-06-01T12:00:00-04:00">1Â week, 1Â day</time>
-              long</p>
+            <p class="date">
+              <time datetime="{{ event.start_time|date:'c' }}">
+                {{ event.start_time }}</time>
+              {% if event.end_time %}:
+              <time datetime="{{ event.end_time|date:'c' }}">
+                {{ event.end_time|timeuntil:event.start_time }}
+              </time> long{% endif %}</p>
             <p>{{ event.location }}</p>
             <p>{{ event.description }}</p>
             <p><a href="{% url 'event_detail' pk=event.pk %}">Permalink</a></p>
@@ -31,8 +34,8 @@
       </tbody>
     </table>
     <p><font size="-1">Unsubscribe <a href="#">here</a>.</font></p>
-    <p><font size="-1">Obviously this is not remotely finished<br>
-        but it's a step to having something simple<br>
-        for me to look at, maybe?</font></p>
+    <p><font size="-1">Office of Ilzolende Kiefer<br>
+        1234 Main Street<br>
+        Boston, Massachusetts 02112<br></font></p>
   </body>
 </html>
