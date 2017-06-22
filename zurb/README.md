@@ -18,6 +18,8 @@ How to generate a Django template from this:
     * Replace `img src="http://127.0.0.1:8000/media/17.jpg"` with `img src="http://127.0.0.1:8000{{ event.picture.url }}`.
     * Replace `a href="http://127.0.0.1:8000/event/3/"` with `a href="http://127.0.0.1:8000{% url 'event_detail' pk=event.pk %}"`.
 5. Place the `{% for event in events %}` and `{% endfor %}` tags.
+    * To find where to place the first of these tags, first find where `{{ event.name }}` is. Scroll up from there until you find the second-level table with the classes `container float-center`, right after the relatively contentless second-level table with the classes `spacer float-center`. Insert `{% for event in events %}` on the empty line between the table with the `spacer` class and the table with the `container` class.
+    * To find where to place the second of these tags, first find where `{{ event.description }}` is. After this, there is some content, a blank line, another second-level table with the classes `spacer float-center`, followed by a blank line. On the blank line right after this second-level table with the `spacer` class, insert the `{% endfor %}` tag.
 
 Notes for putting this into production:
 
