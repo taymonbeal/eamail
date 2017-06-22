@@ -35,6 +35,7 @@ Notes for editing this:
 - Many things which appear to be changed by `src/assets/scss/_settings.scss` are not actually changed by it. Edit them manually in `_template.scss`. No, adding in variable names to `_template.scss` doesn't work. I'm not sure why.
 - Inspecting the HTML output in a browser using "inspect elements" is useful for figuring out where to place the `{% for event in events %}` and `{% endfor %}` tags.
 - You will want to reference other existing Zurb templates to make any major changes to this one. Some of those can be found at <https://github.com/zurb/foundation-emails-template>.
+- Use <https://foundation.zurb.com/emails/docs/sass-guide.html> as a reference.
 
 ***
 
