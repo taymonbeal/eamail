@@ -29,4 +29,4 @@ class Command(BaseCommand):
                         recipient_list=[subscriber.email],
                         connection=connection,
                         html_message=render_to_string(
-                            'subscriptions/newsletter-zurb.html', {'events': events}))
+                            'subscriptions/newsletter.html', {'events': events}))
