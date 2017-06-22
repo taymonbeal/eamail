@@ -10,7 +10,7 @@ How to generate a Django template from this:
 2. Find the file `/zurb/dist/index.html`. This is the file that you will turn into a Django template.
     * Check to make sure it does not reference external stylesheets and does have inlined CSS.
     * If you ran `npm build` instead of `npm run build`, you will not have the results you want.
-3. Copy the contents of that file to wherever you're making the Django template (probably `/project/subscriptions/templates/subscriptions/newsletter.html`).
+3. Copy the contents of `/zurb/dist/index.html` to wherever you're making the Django template (probably `/project/subscriptions/templates/subscriptions/newsletter.html`).
 4. Make the following straightforward replacements, which should be doable via a simple find-and-replace:
     * Remove the backslashes from the strings `{\{ event.name }}` and `{\{ event.location }}`.
     * Replace the text of the paragraph containing `{\{ event.description }}` and some lorem ipsum text with `{{ event.description }}`.
@@ -20,12 +20,21 @@ How to generate a Django template from this:
 5. Place the `{% for event in events %}` and `{% endfor %}` tags.
     * To find where to place the first of these tags, first find where `{{ event.name }}` is. Scroll up from there until you find the second-level table with the classes `container float-center`, right after the relatively contentless second-level table with the classes `spacer float-center`. Insert `{% for event in events %}` on the empty line between the table with the `spacer` class and the table with the `container` class.
     * To find where to place the second of these tags, first find where `{{ event.description }}` is. After this, there is some content, a blank line, another second-level table with the classes `spacer float-center`, followed by a blank line. On the blank line right after this second-level table with the `spacer` class, insert the `{% endfor %}` tag.
+6. Steps which are probably optional, but I did them anyway:
+    * Delete the empty line at the beginning of the file.
+    * In the first second-level table of the file (the one with the style attribute giving it the background color `#054410`), replace all `color: #0a0a0a;` statements with `color: #ffffff;` statements.
 
 Notes for putting this into production:
 
 - There are several links to <http://127.0.0.1:8000>. This should be fixed.
 - Currently, the unsubscribe link goes nowhere. We need to have a working one.
 - Currently, we have a fake address of `EA Boston Events<br/>1024 E Main Street<br/>Somerville, MA 01234`. This needs to change.
+
+Notes for editing this:
+
+- Many things which appear to be changed by `src/assets/scss/_settings.scss` are not actually changed by it. Edit them manually in `_template.scss`. No, adding in variable names to `_template.scss` doesn't work. I'm not sure why.
+- Inspecting the HTML output in a browser using "inspect elements" is useful for figuring out where to place the `{% for event in events %}` and `{% endfor %}` tags.
+- You will want to reference other existing Zurb templates to make any major changes to this one. Some of those can be found at <https://github.com/zurb/foundation-emails-template>.
 
 ***
 
