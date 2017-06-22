@@ -1,10 +1,29 @@
-# Email templating thingy
+# Produces an email you can edit into a Django template
 
-This is a fork of <https://github.com/zurb/foundation-emails-template>.
+This is a pared-down fork of <https://github.com/rtanen/zurb-for-eamail> which is in turn a fork of <https://github.com/zurb/foundation-emails-template>. The purpose of this directory is to produce an HTML email that can then be converted into a Django template, as seen in `/project/subscriptions/templates/subscriptions/newsletter.html`.
 
-This place is not a place of honor, no great deeds are commemmorated here, etc. The purpose of this project is to produce an HTML email that can then be converted into a Django template for <https://github.com/rtanen/eamail>.
+**Warning:** Node has *not* been set up in the Vagrant virtual machine yet! Also, when you run this, it will download and assemble about 350MB of Node modules. These are covered by the `.gitignore`, but it's still something you probably don't want to be surprised by.
 
-Once you have this running, look at the stuff actually being worked on by visiting <http://localhost:3000/ea-events.html>. Yes, it's not linked from the homepage.
+How to generate a Django template from this:
+
+1. Run `npm run build`.
+2. Find the file `/zurb/dist/index.html`. This is the file that you will turn into a Django template.
+  - Check to make sure it does not reference external stylesheets and does have inlined CSS.
+  - If you ran `npm build` instead of `npm run build`, you will not have the results you want.
+3. Copy the contents of that file to wherever you're making the Django template (probably `/project/subscriptions/templates/subscriptions/newsletter.html`).
+4. Make the following straightforward replacements, which should be doable via a simple find-and-replace:
+  * Remove the backslashes from the strings `{\{ event.name }}` and `{\{ event.location }}`.
+  * Replace the text of the paragraph containing `{\{ event.description }}` and some lorem ipsum text with `{{ event.description }}`.
+  * Replace the contents of the paragraph containing `<time>{\{ event.start_time }}</time>` with `<time datetime="{{ event.start_time|date:'c' }}">{{ event.start_time }}</time> {% if event.end_time %}: <time datetime="{{ event.end_time|date:'c' }}"> {{ event.end_time|timeuntil:event.start_time }} </time> long{% endif %}`, or whatever you're currently using to display the times.
+  * Replace `img src="http://127.0.0.1:8000/media/17.jpg"` with `img src="http://127.0.0.1:8000{{ event.picture.url }}`.
+  * Replace `a href="http://127.0.0.1:8000/event/3/"` with `a href="http://127.0.0.1:8000{% url 'event_detail' pk=event.pk %}"`.
+5. Place the `{% for event in events %}` and `{% endfor %}` tags.
+
+Notes for putting this into production:
+
+- There are several links to <http://127.0.0.1:8000>. This should be fixed.
+- Currently, the unsubscribe link goes nowhere. We need to have a working one.
+- Currently, we have a fake address of `EA Boston Events<br/>1024 E Main Street<br/>Somerville, MA 01234`. This needs to change.
 
 ***
 
