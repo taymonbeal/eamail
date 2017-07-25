@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.db.models.functions import Now
 from django.shortcuts import redirect
+from django.urls import reverse, reverse_lazy
 from django.views.generic import RedirectView
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import DeleteView, FormView, UpdateView
 from django.template.loader import render_to_string
 
 from .forms import NewSubscriberForm
@@ -18,7 +19,7 @@ class SubscriberUpdateView(SubscriberMixin, UpdateView):
 
 
 class SubscriberConfirmView(SubscriberMixin, RedirectView):
-    url = '/'
+    url = reverse_lazy('subscribe')
 
     def get_redirect_url(self, *args, **kwargs):
         subscriber = self.get_object()
@@ -48,3 +49,11 @@ class NewSubscriptionView(FormView):
         context = super(NewSubscriptionView, self).get_context_data(**kwargs)
         context['futureevents'] = Event.objects.filter(start_time__gte=Now()).order_by('start_time')
         return context
+
+
+class UnsubscribeView(SubscriberMixin, DeleteView):
+    success_url = reverse_lazy('subscribe')
+
+    def get_success_url(self, *args, **kwargs):
+        messages.success(self.request, 'You have been unsubscribed from all emails.')
+        return super(UnsubscribeView, self).get_success_url(*args, **kwargs)
