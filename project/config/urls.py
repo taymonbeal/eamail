@@ -6,7 +6,11 @@ from django.conf.urls.static import static
 from django.contrib.admin import site as admin_site
 
 from ..events.views import EventDetailView, PastEventListView
-from ..subscriptions.views import NewSubscriptionView, SubscriberUpdateView
+from ..subscriptions.views import (
+    NewSubscriptionView,
+    SubscriberConfirmView,
+    SubscriberUpdateView,
+)
 
 
 uuid_pattern = (r'(?P<uuid>' +
@@ -19,6 +23,9 @@ urlpatterns = [
     url(r'^past/$', PastEventListView.as_view(), name='event_past'),
     url(r'^admin/', admin_site.urls),
     url(r'^$', NewSubscriptionView.as_view(), name='subscribe'),
+    url(r'^confirm/{uuid_pattern}/$'.format(uuid_pattern=uuid_pattern),
+        SubscriberConfirmView.as_view(),
+        name='confirm'),
     url(r'^subscriptions/{uuid_pattern}/$'.format(uuid_pattern=uuid_pattern),
         SubscriberUpdateView.as_view(),
         name='subscriptions'),
