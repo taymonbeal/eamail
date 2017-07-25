@@ -10,6 +10,7 @@ from ..subscriptions.views import (
     NewSubscriptionView,
     SubscriberConfirmView,
     SubscriberUpdateView,
+    UnsubscribeView,
 )
 
 
@@ -29,6 +30,9 @@ urlpatterns = [
     url(r'^subscriptions/{uuid_pattern}/$'.format(uuid_pattern=uuid_pattern),
         SubscriberUpdateView.as_view(),
         name='subscriptions'),
+    url(r'^unsubscribe/{uuid_pattern}/$'.format(uuid_pattern=uuid_pattern),
+        UnsubscribeView.as_view(),
+        name='unsubscribe'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

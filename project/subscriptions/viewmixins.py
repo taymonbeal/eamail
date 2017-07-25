@@ -16,10 +16,10 @@ class SubscriberMixin(SingleObjectMixin):
                 request, *args, **kwargs)
         except InvalidToken:
             return render(
-                request, 'subscriptions/invalid_token.html', status_code=403)
+                request, 'subscriptions/invalid_token.html', status=403)
         except InactiveToken:
             return render(
-                request, 'subscriptions/inactive_token.html', status_code=404)
+                request, 'subscriptions/inactive_token.html', status=404)
 
     def get_object(self):
         return Subscriber.objects.from_uuid(self.kwargs['uuid'])
