@@ -1,0 +1,2 @@
+To confirm your subscription, please click here:
+{% url 'confirm' uuid=uuid %}

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from uuid import uuid1
 
 from django.db.models import (
+    BooleanField,
     EmailField,
     CASCADE,
     Manager,
@@ -47,13 +48,19 @@ class SubscriberManager(Manager):
 class Subscriber(Model):
 
     email = EmailField(unique=True)
-    token = OneToOneField(Token, on_delete=CASCADE, default=create_token)
+    is_confirmed = BooleanField(default=False)
+    token = OneToOneField(Token, on_delete=CASCADE)
     interests = ManyToManyField(Interest)
 
     objects = SubscriberManager()
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        if self.token_id is None:
+            self.token = Token.objects.create()
+        return super(Subscriber, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('subscriptions', kwargs={'uuid': self.token.uuid})

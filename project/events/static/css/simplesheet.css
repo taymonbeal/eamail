@@ -17,6 +17,7 @@ form #id_interests { list-style-type: none; padding: 0; }
 .event, #subscribeform, #noevents, form.form-only-page { background-color: #fff; color: #000; }
 summary { display: block; }
 summary::before { content: none; }
+summary::-webkit-details-marker { color: red; display: none; }
 summary h1 { margin: 0; }
 summary img { float: left; }
 .event .date, #subscribeblurb { margin: 0; }

@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with get_connection() as connection:
-            for subscriber in Subscriber.objects.all():
+            for subscriber in Subscriber.objects.filter(is_confirmed=True):
                 events = Event.objects.filter(
                     interests__subscriber=subscriber,
                     start_time__date__gte=TruncDate(Now()),
