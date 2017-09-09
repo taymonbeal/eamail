@@ -25,8 +25,11 @@ class SubscriberConfirmView(SubscriberMixin, RedirectView):
         subscriber = self.get_object()
         subscriber.is_confirmed = True
         subscriber.save()
-        messages.success(self.request, 'Your subscription has been confirmed.')
-        return super(SubscriberConfirmView, self).get_redirect_url(*args, **kwargs)
+        messages.success(
+            self.request,
+            'Your subscription has been confirmed. Thanks for signing up!')
+        return super(SubscriberConfirmView, self).get_redirect_url(
+            *args, **kwargs)
 
 
 class NewSubscriptionView(FormView):
@@ -42,7 +45,11 @@ class NewSubscriptionView(FormView):
                                      {'uuid': subscriber.token.uuid}),
             from_email='webmaster@localhost',
             recipient_list=[subscriber.email])
-        messages.success(self.request, 'Thank you for subscribing.')
+        messages.success(
+            self.request,
+            'A confirmation email has been sent to {}. Please click the link '
+            'in the email to finish subscribing'.format(
+                subscriber.email))
         return redirect('subscribe')
 
     def get_context_data(self, **kwargs):
