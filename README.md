@@ -2,7 +2,7 @@
 
 This project requires [Vagrant](https://www.vagrantup.com/) to run.
 
-Once Vagrant is installed, from the main (eamail) directory, use the `vagrant up` command to start the VM and the `vagrant ssh` command to enter it, then navigate to the project directory from within the Vagrant VM and use the `runserver` command to run the website (and email-sending) systems.
+Once Vagrant is installed, from the main (eamail) directory, use the `vagrant up` command to start the VM and the `vagrant ssh` command to enter it, then navigate to the project directory from within the Vagrant VM and use the `runserver` command to run the website (and email-sending) systems. Note that `vagrant up` is used both to create the VM the first time you run it, and to start the VM after it has been created.
 
 The site will be viewable at <http://0.0.0.0:8000/> or <http://localhost:8000/>.
 
